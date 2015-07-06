@@ -1,2 +1,2 @@
 # PlayYouTube
-Play Youtube videos inside visual studio
+Play youtube videos inside visual studio
