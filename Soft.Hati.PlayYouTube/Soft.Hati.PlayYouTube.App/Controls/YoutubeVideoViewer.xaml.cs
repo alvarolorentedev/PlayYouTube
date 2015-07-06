@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Soft.Hati.PlayYouTube.App.Controls
@@ -6,7 +7,7 @@ namespace Soft.Hati.PlayYouTube.App.Controls
     public partial class YoutubeVideoViewer : UserControl
     {
 
-        static string html = "<html><iframe width=\"800\" height=\"480\" src=\"http://www.youtube.com/embed/{0}?rel=0\" frameborder=\"0\" allowfullscreen></iframe></html>";
+        static string html = "<iframe width=\"100%\" height=\"100%\" src=\"http://www.youtube.com/embed/{0}?rel=0\" frameborder=\"0\" allowfullscreen></iframe>";
 
         public YoutubeVideoViewer()
         {
@@ -25,6 +26,13 @@ namespace Soft.Hati.PlayYouTube.App.Controls
         {
             get { return (string)GetValue(VideoIDProperty); }
             set { SetValue(VideoIDProperty, value); }
+        }
+
+        private void browser_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            string script = "document.body.style.overflow ='hidden'";
+            WebBrowser wb = (WebBrowser)sender;
+            wb.InvokeScript("execScript", new Object[] { script, "JavaScript" });
         }
     }
 

@@ -4,12 +4,23 @@
              xmlns:controls="clr-namespace:Soft.Hati.PlayYouTube.App.Controls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:youtube="clr-namespace:Soft.Hati.YouPlayVS.Core.Youtube;assembly=Soft.Hati.PlayYouTube.Core"
              Name="MyToolWindow"
              Background="{DynamicResource VsBrush.Window}"
              Foreground="{DynamicResource VsBrush.WindowText}"
              d:DesignHeight="300"
              d:DesignWidth="300"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type youtube:SearchResult}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Name}" />
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -18,19 +29,67 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <TextBlock Margin="10" Text="Video ID" />
+        <TextBlock Margin="10" Text="Search" />
         <TextBox Grid.Column="1"
                  Margin="10"
-                 Text="{Binding IDStringVideo}" />
-        <Button Grid.Column="2"
-                Width="100"
-                Margin="10"
-                Command="{Binding GoCommand}"
-                Content="Go" />
-        <controls:YoutubeVideoViewer Grid.Row="1"
-                                     Grid.ColumnSpan="3"
-                                     VideoID="{Binding IDVideo}" />
+                 Text="{Binding IDStringVideo,
+                                UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Return" Command="{Binding GoCommand}" />
+            </TextBox.InputBindings>
+        </TextBox>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="470" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="2*" MinWidth="350" />
+            </Grid.ColumnDefinitions>
+            <controls:YoutubeVideoViewer Grid.Column="0" VideoID="{Binding IDVideo}" />
+            <GridSplitter Grid.Column="1"
+                          Width="5"
+                          HorizontalAlignment="Stretch" />
+            <DataGrid Grid.Column="2"
+                      AutoGenerateColumns="False"
+                      GridLinesVisibility="None"
+                      ItemsSource="{Binding Videos}"
+                      SelectedItem="{Binding SelectedVideo}"
+                      SelectionMode="Single">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="SizeToCells"
+                                            Header="Thumbnail"
+                                            IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Thumbnail}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="*"
+                                            Header="Content"
+                                            IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               FontSize="14"
+                                               FontWeight="Bold"
+                                               Text="{Binding Name}"
+                                               TextWrapping="WrapWithOverflow" />
+                                    <TextBlock Grid.Row="1"
+                                               FontSize="11"
+                                               Text="{Binding Description}"
+                                               TextWrapping="WrapWithOverflow" />
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </UserControl>

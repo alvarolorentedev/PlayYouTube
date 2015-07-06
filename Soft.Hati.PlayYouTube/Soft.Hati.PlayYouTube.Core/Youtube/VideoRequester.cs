@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
 
 namespace Soft.Hati.YouPlayVS.Core.Youtube
@@ -16,6 +17,8 @@ namespace Soft.Hati.YouPlayVS.Core.Youtube
         {
             var searchListRequest = serviceContainer.Service.Search.List("snippet");
             searchListRequest.Q = query;
+            searchListRequest.Type = "video";
+            //searchListRequest.SafeSearch = SearchResource.ListRequest.SafeSearchEnum.Strict;
             searchListRequest.MaxResults = 50;
 
             return new YuotubeQueryResponse(await searchListRequest.ExecuteAsync());

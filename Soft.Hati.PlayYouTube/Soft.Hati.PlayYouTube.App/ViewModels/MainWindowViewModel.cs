@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using Soft.Hati.YouPlayVS.Core.MVVM;
@@ -10,6 +11,8 @@ namespace Soft.Hati.PlayYouTube.App.ViewModels
     {
         private string _idStringVideo;
         private string _idVideo;
+        private IEnumerable<SearchResult> videos;
+        private SearchResult selectedVideo;
 
         public MainWindowViewModel()
         {
@@ -21,11 +24,26 @@ namespace Soft.Hati.PlayYouTube.App.ViewModels
             var req = new VideoRequester(new YouMixServiceContainer());
             req.Search(IDStringVideo).ContinueWith(result =>
             {
-                videos = new ObservableCollection<SearchResult>(result.Result.Videos);
+                Videos = result.Result.Videos;
             });
         }
 
-        public ObservableCollection<SearchResult> videos { get; set; }
+        public IEnumerable<SearchResult> Videos
+        {
+            get { return videos; }
+            set { SetValue(ref videos, value, () => Videos); }
+        }
+
+        public SearchResult SelectedVideo
+        {
+            get { return selectedVideo; }
+            set
+            {
+                SetValue(ref selectedVideo, value, ()=> SelectedVideo);
+                if(value != null)
+                    IDVideo = SelectedVideo.Id;
+            }
+        }
 
         public ICommand GoCommand { get; private set; }
 

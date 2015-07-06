@@ -5,10 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              Background="{DynamicResource VsBrush.Window}"
              Foreground="{DynamicResource VsBrush.WindowText}"
-             d:DesignHeight="300"
-             d:DesignWidth="300"
+             d:DesignHeight="480"
+             d:DesignWidth="800"
              mc:Ignorable="d">
-    <Grid>
-        <WebBrowser x:Name="browser" />
-    </Grid>
+    <WebBrowser x:Name="browser"                             
+                Margin="0" LoadCompleted="browser_LoadCompleted" />
 </UserControl>

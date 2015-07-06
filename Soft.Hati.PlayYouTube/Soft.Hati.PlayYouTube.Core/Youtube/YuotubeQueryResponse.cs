@@ -19,7 +19,10 @@ namespace Soft.Hati.YouPlayVS.Core.Youtube
                         videos.Add(new SearchResult
                         {
                             Id = item.Id.VideoId,
-                            Name = item.Snippet.Title
+                            Name = item.Snippet.Title,
+                            Thumbnail = item.Snippet.Thumbnails.Default.Url,
+                            Description = item.Snippet.Description,
+
                         });
                         break;
 
@@ -37,8 +40,9 @@ namespace Soft.Hati.YouPlayVS.Core.Youtube
 
     public class SearchResult
     {
-        public string Name { get; set; }
-
         public string Id { get; set; }
+        public string Name { get; set; }
+        public string Thumbnail { get; set; }
+        public string Description { get; set; }
     }
 }
