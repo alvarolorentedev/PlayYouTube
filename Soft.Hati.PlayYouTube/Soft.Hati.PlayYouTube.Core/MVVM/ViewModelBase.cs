@@ -31,7 +31,8 @@ namespace Soft.Hati.YouPlayVS.Core.MVVM
         private void RaisePropertyChanged(string propertyName)
         {
             var handler = PropertyChanged;
-            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

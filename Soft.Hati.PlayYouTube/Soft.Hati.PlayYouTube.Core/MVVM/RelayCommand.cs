@@ -31,7 +31,7 @@ namespace Soft.Hati.YouPlayVS.Core.MVVM
         [DebuggerStepThrough]
         public bool CanExecute(object parameter)
         {
-            return canExecute?.Invoke(parameter) ?? true;
+            return canExecute == null ? true : canExecute(parameter);
         }
 
         public event EventHandler CanExecuteChanged
