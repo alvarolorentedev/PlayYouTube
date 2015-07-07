@@ -43,7 +43,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" MinWidth="470" />
                 <ColumnDefinition Width="5" />
-                <ColumnDefinition Width="2*" MinWidth="350" />
+                <ColumnDefinition Width="*" MinWidth="200" />
             </Grid.ColumnDefinitions>
             <controls:YoutubeVideoViewer Grid.Column="0" VideoID="{Binding IDVideo}" />
             <GridSplitter Grid.Column="1"

@@ -13,6 +13,7 @@ namespace Soft.Hati.PlayYouTube.App.ViewModels
         private string _idVideo;
         private IEnumerable<SearchResult> videos;
         private SearchResult selectedVideo;
+        private bool searchInProgress;
 
         public MainWindowViewModel()
         {
@@ -21,10 +22,12 @@ namespace Soft.Hati.PlayYouTube.App.ViewModels
 
         private void Search(object obj)
         {
+            SearchInProgress = true;
             var req = new VideoRequester(new YouMixServiceContainer());
             req.Search(IDStringVideo).ContinueWith(result =>
             {
                 Videos = result.Result.Videos;
+                SearchInProgress = false;
             });
         }
 
@@ -32,6 +35,12 @@ namespace Soft.Hati.PlayYouTube.App.ViewModels
         {
             get { return videos; }
             set { SetValue(ref videos, value, () => Videos); }
+        }
+
+        public bool SearchInProgress
+        {
+            get { return searchInProgress; }
+            set { SetValue(ref searchInProgress, value, () => SearchInProgress); }
         }
 
         public SearchResult SelectedVideo

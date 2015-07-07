@@ -44,9 +44,9 @@
           If you do not want an image next to your command, remove the Icon node /> -->
       <Button guid="guidMainWindowPackageCmdSet" id="MainWindowCommandId" priority="0x0100" type="Button">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="guidImages" id="bmpPicSearch" />
         <Strings>
-          <ButtonText>MainWindow</ButtonText>
+          <ButtonText>PlayYouTube</ButtonText>
         </Strings>
       </Button>
     </Buttons>
