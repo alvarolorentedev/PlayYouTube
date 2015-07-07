@@ -18,8 +18,8 @@ namespace Soft.Hati.YouPlayVS.Core.Youtube
             var searchListRequest = serviceContainer.Service.Search.List("snippet");
             searchListRequest.Q = query;
             searchListRequest.Type = "video";
-            //searchListRequest.SafeSearch = SearchResource.ListRequest.SafeSearchEnum.Strict;
-            searchListRequest.MaxResults = 50;
+            searchListRequest.SafeSearch = SearchResource.ListRequest.SafeSearchEnum.None;
+            searchListRequest.MaxResults = 20;
 
             return new YuotubeQueryResponse(await searchListRequest.ExecuteAsync());
         }

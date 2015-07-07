@@ -7,30 +7,11 @@ namespace Soft.Hati.YouPlayVS.Core.Youtube
 {
     public class YuotubeQueryResponse : IQueryResponse
     {
-        private IList<SearchResult> videos = new List<SearchResult>();
+        private readonly IList<SearchResult> videos = new List<SearchResult>();
 
         public YuotubeQueryResponse(SearchListResponse listResponse)
         {
-            listResponse.Items.ToList().ForEach(item =>
-            {
-                switch (item.Id.Kind)
-                {
-                    case "youtube#video":
-                        videos.Add(new SearchResult
-                        {
-                            Id = item.Id.VideoId,
-                            Name = item.Snippet.Title,
-                            Thumbnail = item.Snippet.Thumbnails.Default.Url,
-                            Description = item.Snippet.Description,
-
-                        });
-                        break;
-
-                    case "youtube#channel":
-                    case "youtube#playlist":
-                        break;
-                }
-            });
+            listResponse.Items.ToList().ForEach(item => videos.Add(new SearchResult(item.Id.VideoId, item.Snippet.Title,item.Snippet.Thumbnails.Default.Url,item.Snippet.Description)));
         }
         public IEnumerable<SearchResult> Videos
         {
@@ -40,9 +21,17 @@ namespace Soft.Hati.YouPlayVS.Core.Youtube
 
     public class SearchResult
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Thumbnail { get; set; }
-        public string Description { get; set; }
+        public SearchResult(string id, string name, string thumbnail, string description)
+        {
+            Id = id;
+            Name = name;
+            Thumbnail = thumbnail;
+            Description = description;
+        }
+
+        public string Id { get; private set; }
+        public string Name { get; private set; }
+        public string Thumbnail { get; private set; }
+        public string Description { get; private set; }
     }
 }
