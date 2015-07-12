@@ -41,7 +41,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Soft.Hati.PlayYouTube.App</RootNamespace>
-    <AssemblyName>Soft.Hati.PlayYouTube.App</AssemblyName>
+    <AssemblyName>PlayYouTube</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>

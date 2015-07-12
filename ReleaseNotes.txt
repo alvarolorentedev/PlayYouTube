@@ -1,3 +1,6 @@
+12/07/2015:
+- fixed issue with required html5 browser
+- improved error handling
 07/07/2015:
 - Added compatibility with previous versions of visual studio
 - Added Icon
