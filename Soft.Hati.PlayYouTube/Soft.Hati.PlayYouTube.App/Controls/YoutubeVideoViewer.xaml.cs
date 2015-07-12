@@ -6,8 +6,9 @@ namespace Soft.Hati.PlayYouTube.App.Controls
 {
     public partial class YoutubeVideoViewer : UserControl
     {
-
-        static string html = "<iframe width=\"100%\" height=\"100%\" src=\"http://www.youtube.com/embed/{0}?rel=0\" frameborder=\"0\" allowfullscreen></iframe>";
+        static string html = "<!DOCTYPE html><html><head><meta http-equiv='Content-Type' content='application/x-shockwave-flash' /><meta http-equiv='X-UA-Compatible' content='IE=Edge' /><title></title>"
+            + "<style>html, body {{height: 100%; margin: 0px 0px 10px 0px;}}</style></head>"
+            + "<iframe preload='metadata' width=\"100%\" height=\"100%\" src=\"http://www.youtube.com/embed/{0}?rel=0\" frameborder=\"0\" allowfullscreen></iframe></html>";
 
         public YoutubeVideoViewer()
         {

@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using Soft.Hati.YouPlayVS.Core.MVVM;
 using Soft.Hati.YouPlayVS.Core.Youtube;
@@ -22,13 +24,32 @@ namespace Soft.Hati.PlayYouTube.App.ViewModels
 
         private void Search(object obj)
         {
-            SearchInProgress = true;
-            var req = new VideoRequester(new YouMixServiceContainer());
-            req.Search(IDStringVideo).ContinueWith(result =>
+            try
             {
-                Videos = result.Result.Videos;
+                SearchInProgress = true;
+                var req = new VideoRequester(new YouMixServiceContainer());
+                req.Search(IDStringVideo).ContinueWith(result =>
+                {
+                    if (result.Exception == null)
+                        Videos = result.Result.Videos;
+                    else
+                        HandleSearchException();
+                    SearchInProgress = false;
+                });
+            }
+            catch (Exception)
+            {
+                HandleSearchException();
                 SearchInProgress = false;
-            });
+            }
+            
+        }
+
+        private void HandleSearchException()
+        {
+            MessageBox.Show(
+                "Error accessing web service, please check your conection. If the problems perseveres please contact us",
+                "Network Error", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         public IEnumerable<SearchResult> Videos

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:youtube="clr-namespace:Soft.Hati.YouPlayVS.Core.Youtube;assembly=Soft.Hati.PlayYouTube.Core"
+             xmlns:viewModels="clr-namespace:Soft.Hati.PlayYouTube.App.ViewModels"
              Name="MyToolWindow"
              Background="{DynamicResource VsBrush.Window}"
              Foreground="{DynamicResource VsBrush.WindowText}"
@@ -25,6 +26,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -33,12 +35,14 @@
         <TextBlock Margin="10" Text="Search" />
         <TextBox Grid.Column="1"
                  Margin="10"
+                 IsEnabled="{Binding SearchInProgress, Converter={viewModels:InverseBooleanConverter}}"
                  Text="{Binding IDStringVideo,
                                 UpdateSourceTrigger=PropertyChanged}">
             <TextBox.InputBindings>
                 <KeyBinding Key="Return" Command="{Binding GoCommand}" />
             </TextBox.InputBindings>
         </TextBox>
+        <ProgressBar Grid.Row="2" Grid.ColumnSpan="2" Height="14" HorizontalAlignment="Stretch" IsIndeterminate="{Binding SearchInProgress}"/>
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" MinWidth="470" />
@@ -90,6 +94,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+
         </Grid>
     </Grid>
 </UserControl>
