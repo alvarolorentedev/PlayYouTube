@@ -1,4 +1,6 @@
-﻿using Soft.Hati.PlayYouTube.App.ViewModels;
+﻿using System;
+using System.IO;
+using Soft.Hati.PlayYouTube.App.ViewModels;
 
 namespace Soft.Hati.PlayYouTube.App
 {
@@ -10,11 +12,18 @@ namespace Soft.Hati.PlayYouTube.App
     {
         public MainWindowControl()
         {
+            InstallAvalonToGac();
             this.DataContext = new MainWindowViewModel();
             this.InitializeComponent();
         }
 
-        [SuppressMessage("Microsoft.Globalization", "CA1300:SpecifyMessageBoxOptions", Justification = "Sample code")]
+    private static void InstallAvalonToGac()
+    {
+        var fullpath = Path.Combine(Environment.CurrentDirectory, "Xceed.Wpf.AvalonDock.dll");
+        new System.EnterpriseServices.Internal.Publish().GacInstall(fullpath);
+    }
+
+    [SuppressMessage("Microsoft.Globalization", "CA1300:SpecifyMessageBoxOptions", Justification = "Sample code")]
         [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Default event handler naming pattern")]
         private void button1_Click(object sender, RoutedEventArgs e)
         {

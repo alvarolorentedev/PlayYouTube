@@ -6,6 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:youtube="clr-namespace:Soft.Hati.YouPlayVS.Core.Youtube;assembly=Soft.Hati.PlayYouTube.Core"
              xmlns:viewModels="clr-namespace:Soft.Hati.PlayYouTube.App.ViewModels"
+             xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
              Name="MyToolWindow"
              Background="{DynamicResource VsBrush.Window}"
              Foreground="{DynamicResource VsBrush.WindowText}"
@@ -43,58 +44,60 @@
             </TextBox.InputBindings>
         </TextBox>
         <ProgressBar Grid.Row="2" Grid.ColumnSpan="2" Height="14" HorizontalAlignment="Stretch" IsIndeterminate="{Binding SearchInProgress}"/>
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" MinWidth="470" />
-                <ColumnDefinition Width="5" />
-                <ColumnDefinition Width="*" MinWidth="200" />
-            </Grid.ColumnDefinitions>
-            <controls:YoutubeVideoViewer Grid.Column="0" VideoID="{Binding IDVideo}" />
-            <GridSplitter Grid.Column="1"
-                          Width="5"
-                          HorizontalAlignment="Stretch" />
-            <DataGrid Grid.Column="2"
-                      AutoGenerateColumns="False"
-                      GridLinesVisibility="None"
-                      ItemsSource="{Binding Videos}"
-                      SelectedItem="{Binding SelectedVideo}"
-                      SelectionMode="Single">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn Width="SizeToCells"
+        <xcad:DockingManager Grid.Row="1" Grid.ColumnSpan="2">
+            <xcad:LayoutRoot>
+                <xcad:LayoutPanel>
+                    <xcad:LayoutAnchorablePane>
+                        <xcad:LayoutAnchorable CanClose="False" CanHide="False" CanAutoHide="False" CanFloat="False" Title="Video" ContentId="Video">
+                            <controls:YoutubeVideoViewer VideoID="{Binding IDVideo}" />
+                        </xcad:LayoutAnchorable>
+                    </xcad:LayoutAnchorablePane>
+                    <xcad:LayoutAnchorablePane DockMinWidth="350">
+                        <xcad:LayoutAnchorable CanClose="False" CanHide="False" CanAutoHide="True" Title="Results" ContentId="Results" CanFloat="False" AutoHideWidth="500" AutoHideMinWidth="350">
+                            <DataGrid AutoGenerateColumns="False"
+                                          GridLinesVisibility="None"
+                                          ItemsSource="{Binding Videos}"
+                                          SelectedItem="{Binding SelectedVideo}"
+                                          SelectionMode="Single" >
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Width="SizeToCells"
                                             Header="Thumbnail"
                                             IsReadOnly="True">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding Thumbnail}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Width="*"
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Image Source="{Binding Thumbnail}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Width="*"
                                             Header="Content"
                                             IsReadOnly="True">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0"
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Grid.Row="0"
                                                FontSize="14"
                                                FontWeight="Bold"
                                                Text="{Binding Name}"
                                                TextWrapping="WrapWithOverflow" />
-                                    <TextBlock Grid.Row="1"
+                                                    <TextBlock Grid.Row="1"
                                                FontSize="11"
                                                Text="{Binding Description}"
                                                TextWrapping="WrapWithOverflow" />
-                                </Grid>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-
-        </Grid>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </xcad:LayoutAnchorable>
+                    </xcad:LayoutAnchorablePane>
+                </xcad:LayoutPanel>
+            </xcad:LayoutRoot>
+        </xcad:DockingManager>
     </Grid>
 </UserControl>
