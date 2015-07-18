@@ -13,7 +13,6 @@ namespace Soft.Hati.PlayYouTube.App
         public MainWindowControl()
         {
             InstallAvalonToGac();
-            this.DataContext = new MainWindowViewModel();
             this.InitializeComponent();
         }
 

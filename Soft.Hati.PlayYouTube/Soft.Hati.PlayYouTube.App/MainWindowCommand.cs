@@ -48,6 +48,12 @@ namespace Soft.Hati.PlayYouTube.App
         public static void Initialize(Package package)
         {
             Instance = new MainWindowCommand(package);
+            ToolWindowPane window = package.FindToolWindow(typeof(MainWindow), 0, true);
+            if ((null == window) || (null == window.Frame))
+            {
+                throw new NotSupportedException("Cannot create tool window");
+            }
+            ((MainWindow)window).Initialize(((MainWindowPackage)package).Options);
         }
 
         private void ShowToolWindow(object sender, EventArgs e)

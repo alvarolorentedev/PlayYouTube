@@ -79,6 +79,17 @@
     <Compile Include="MainWindowPackage.cs" />
     <Compile Include="MainWindowPackageGuids.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Options\OptionPageGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Options\OptionsManager.cs" />
+    <Compile Include="Services\Options\OptionUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Services\Options\OptionUserControl.Designer.cs">
+      <DependentUpon>OptionUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Options\SettingStoreProvider.cs" />
     <Compile Include="ViewModels\BaseConverter.cs" />
     <Compile Include="ViewModels\InverseBooleanConverter.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -305,6 +316,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Services\Options\OptionUserControl.resx">
+      <DependentUpon>OptionUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>
