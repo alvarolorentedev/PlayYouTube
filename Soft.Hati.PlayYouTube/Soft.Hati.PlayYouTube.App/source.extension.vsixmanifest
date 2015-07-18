@@ -4,7 +4,7 @@
     <Identity Id="Soft.Hati.PlayYouTube.App.Hati Softwareware.e6b6ef9d-c5ea-4d29-b486-331f8d6da848" Version="1.0.0" Language="en-US" Publisher="Hati Software" />
     <DisplayName>PlayYouTube</DisplayName>
     <Description xml:space="preserve">Play Youtube videos inside visual studio</Description>
-    <MoreInfo>https://github.com/Hatisoft/PlayYouTube</MoreInfo>
+    <MoreInfo>http://hatisoft.net/playyoutube/</MoreInfo>
     <License>LICENSE.txt</License>
     <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
     <Icon>Resources\MainWindowPackage.ico</Icon>
