@@ -5,6 +5,7 @@ using Soft.Hati.PlayYouTube.App.Services.Options;
 
 namespace Soft.Hati.PlayYouTube.App
 {
+    [ProvideBindingPath]
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
