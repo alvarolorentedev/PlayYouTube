@@ -4,9 +4,9 @@
              xmlns:controls="clr-namespace:Soft.Hati.PlayYouTube.App.Controls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:youtube="clr-namespace:Soft.Hati.YouPlayVS.Core.Youtube;assembly=Soft.Hati.PlayYouTube.Core"
              xmlns:viewModels="clr-namespace:Soft.Hati.PlayYouTube.App.ViewModels"
              xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
+             xmlns:youtube="clr-namespace:Soft.Hati.PlayYouTube.Core.Youtube;assembly=Soft.Hati.PlayYouTube.Core"
              Name="MyToolWindow"
              Background="{DynamicResource VsBrush.Window}"
              Foreground="{DynamicResource VsBrush.WindowText}"
@@ -66,7 +66,7 @@
                                             IsReadOnly="True">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Image Source="{Binding Thumbnail}" Width="125" Height="100" Stretch="Fill" />
+                                                    <Image Source="{Binding Thumbnail}" Width="135" Height="100" Stretch="Fill" />
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
@@ -108,7 +108,7 @@
                                             IsReadOnly="True">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Image Source="{Binding Thumbnail}" Width="125" Height="100" Stretch="Fill" />
+                                                    <Image Source="{Binding Thumbnail}" Width="135" Height="100" Stretch="Fill" />
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
@@ -150,7 +150,7 @@
                                             IsReadOnly="True">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Image Source="{Binding Thumbnail}" Width="130" Height="100" Stretch="Fill" />
+                                                    <Image Source="{Binding Thumbnail}" Width="135" Height="100" Stretch="Fill" />
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>

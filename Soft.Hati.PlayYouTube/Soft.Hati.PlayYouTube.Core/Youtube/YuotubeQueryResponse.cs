@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.YouTube.v3.Data;
 
-namespace Soft.Hati.YouPlayVS.Core.Youtube
+namespace Soft.Hati.PlayYouTube.Core.Youtube
 {
     public class YuotubeQueryResponse : IQueryResponse
     {

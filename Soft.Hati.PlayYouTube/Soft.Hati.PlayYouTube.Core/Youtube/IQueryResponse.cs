@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Soft.Hati.YouPlayVS.Core.Youtube
+namespace Soft.Hati.PlayYouTube.Core.Youtube
 {
     public interface IQueryResponse
     {

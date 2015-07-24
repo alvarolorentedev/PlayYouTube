@@ -2,7 +2,7 @@ using System;
 using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 
-namespace Soft.Hati.YouPlayVS.Core.Youtube
+namespace Soft.Hati.PlayYouTube.Core.Youtube
 {
     public class YouMixServiceContainer : IYoutubeServiceContainer
     {

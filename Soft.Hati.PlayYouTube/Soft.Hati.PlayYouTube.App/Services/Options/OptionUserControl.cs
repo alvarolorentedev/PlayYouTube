@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Soft.Hati.YouPlayVS.Core.Youtube;
+using Soft.Hati.PlayYouTube.Core.Youtube;
 
 namespace Soft.Hati.PlayYouTube.App.Services.Options
 {

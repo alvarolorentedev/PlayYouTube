@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace Soft.Hati.YouPlayVS.Core.MVVM
+namespace Soft.Hati.PlayYouTube.Core.MVVM
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {

@@ -5,8 +5,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Soft.Hati.PlayYouTube.App.Services.Options;
-using Soft.Hati.YouPlayVS.Core.MVVM;
-using Soft.Hati.YouPlayVS.Core.Youtube;
+using Soft.Hati.PlayYouTube.Core.MVVM;
+using Soft.Hati.PlayYouTube.Core.Youtube;
 
 namespace Soft.Hati.PlayYouTube.App.ViewModels
 {

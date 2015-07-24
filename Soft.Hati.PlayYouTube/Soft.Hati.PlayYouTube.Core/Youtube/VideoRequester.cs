@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
 
-namespace Soft.Hati.YouPlayVS.Core.Youtube
+namespace Soft.Hati.PlayYouTube.Core.Youtube
 {
     public class VideoRequester
     {

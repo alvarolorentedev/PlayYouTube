@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using Soft.Hati.YouPlayVS.Core.Youtube;
+using Soft.Hati.PlayYouTube.Core.Youtube;
 
 namespace Soft.Hati.PlayYouTube.App.Controls
 {

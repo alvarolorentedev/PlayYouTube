@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 
-namespace Soft.Hati.YouPlayVS.Core.Youtube
+namespace Soft.Hati.PlayYouTube.Core.Youtube
 {
     public static class AssemblyHandler
     {

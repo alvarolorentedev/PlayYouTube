@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace Soft.Hati.YouPlayVS.Core.MVVM
+namespace Soft.Hati.PlayYouTube.Core.MVVM
 {
     // Josh Smith's relay command 
     // reference: http://msdn.microsoft.com/en-us/magazine/dd419663.aspx
