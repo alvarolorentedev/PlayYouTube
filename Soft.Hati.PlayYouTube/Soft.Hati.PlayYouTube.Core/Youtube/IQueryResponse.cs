@@ -4,6 +4,6 @@ namespace Soft.Hati.YouPlayVS.Core.Youtube
 {
     public interface IQueryResponse
     {
-        IEnumerable<SearchResult> Videos { get; }
+        IDictionary<TypeResult, IList<SearchResult>> Results { get; }
     }
 }

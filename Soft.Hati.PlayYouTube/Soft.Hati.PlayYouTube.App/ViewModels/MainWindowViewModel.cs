@@ -18,6 +18,9 @@ namespace Soft.Hati.PlayYouTube.App.ViewModels
         private IEnumerable<SearchResult> videos;
         private SearchResult selectedVideo;
         private bool searchInProgress;
+        private IEnumerable<SearchResult> playlists;
+        private IEnumerable<SearchResult> channels;
+        private TypeResult _linkType;
 
         public MainWindowViewModel(OptionsManager options)
         {
@@ -25,20 +28,17 @@ namespace Soft.Hati.PlayYouTube.App.ViewModels
             GoCommand = new RelayCommand(Search, arg => true);
         }
 
-        private void Search(object obj)
+        private async void Search(object obj)
         {
             try
             {
                 SearchInProgress = true;
                 var req = new VideoRequester(new YouMixServiceContainer());
-                req.Search(IDStringVideo, options.SafeSearchLevel).ContinueWith(result =>
-                {
-                    if (result.Exception == null)
-                        Videos = result.Result.Videos;
-                    else
-                        HandleSearchException();
-                    SearchInProgress = false;
-                });
+                var result = await req.Search(IDStringVideo, options.SafeSearchLevel);
+                Videos = result.Results[TypeResult.video];
+                Playlists = result.Results[TypeResult.playlist];
+                Channels = result.Results[TypeResult.channel];
+                SearchInProgress = false;
             }
             catch (Exception)
             {
@@ -61,6 +61,18 @@ namespace Soft.Hati.PlayYouTube.App.ViewModels
             set { SetValue(ref videos, value, () => Videos); }
         }
 
+        public IEnumerable<SearchResult> Playlists
+        {
+            get { return playlists; }
+            set { SetValue(ref playlists, value, () => Playlists); }
+        }
+
+        public IEnumerable<SearchResult> Channels
+        {
+            get { return channels; }
+            set { SetValue(ref channels, value, () => Channels); }
+        }
+
         public bool SearchInProgress
         {
             get { return searchInProgress; }
@@ -72,9 +84,10 @@ namespace Soft.Hati.PlayYouTube.App.ViewModels
             get { return selectedVideo; }
             set
             {
+                if (value == null)
+                    return;
+
                 SetValue(ref selectedVideo, value, ()=> SelectedVideo);
-                if(value != null)
-                    IDVideo = SelectedVideo.Id;
             }
         }
 
@@ -86,10 +99,11 @@ namespace Soft.Hati.PlayYouTube.App.ViewModels
             set { SetValue(ref idStringVideo, value, () => IDStringVideo); }
         }
 
-        public string IDVideo
+        public TypeResult LinkType
         {
-            get { return idVideo; }
-            set { SetValue(ref idVideo, value, () => IDVideo); }
+            get { return _linkType; }
+            set { SetValue(ref _linkType, value, () => LinkType); }
         }
+
     }
 }
