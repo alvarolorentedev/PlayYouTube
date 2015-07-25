@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using Soft.Hati.PlayYouTube.Core.Youtube;
@@ -48,16 +49,46 @@ namespace Soft.Hati.PlayYouTube.App.Controls
 
         private string UpdateHtml(string id, TypeResult resultType)
         {
+            //UserNavigationRequest = false;
             return string.Format(Html, string.Format("{0}{1}", AppenderSelector(resultType), id));
         }
 
         private void browser_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
+            RemoveScrollbar(sender);
+            HandleNewWindow(sender);
+        }
+
+        private void HandleNewWindow(object sender)
+        {
+            var Browser = (WebBrowser)sender;
+            var SID_SWebBrowserApp = new Guid("0002DF05-0000-0000-C000-000000000046");
+
+            try
+            {
+                var serviceProvider = (UCOMIServiceProvider) Browser.Document;
+                var serviceGuid = SID_SWebBrowserApp;
+                var iid = typeof (SHDocVw.IWebBrowser2).GUID;
+                var myWebBrowser2 = (SHDocVw.IWebBrowser2) serviceProvider.QueryService(ref serviceGuid, ref iid);
+                var wbEvents = (SHDocVw.DWebBrowserEvents_Event) myWebBrowser2;
+                wbEvents.NewWindow += new SHDocVw.DWebBrowserEvents_NewWindowEventHandler(OnWebBrowserNewWindow);
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private static void RemoveScrollbar(object sender)
+        {
             string script = "document.body.style.overflow ='hidden'";
-            WebBrowser wb = (WebBrowser)sender;
-            wb.InvokeScript("execScript", new Object[] { script, "JavaScript" });
+            WebBrowser wb = (WebBrowser) sender;
+            wb.InvokeScript("execScript", new Object[] {script, "JavaScript"});
+        }
+
+        private void OnWebBrowserNewWindow(string url, int flags, string targetframename, ref object postdata, string headers, ref bool processed)
+        {
+            processed = true;
+            Process.Start(url);
         }
     }
-
-    
 }
