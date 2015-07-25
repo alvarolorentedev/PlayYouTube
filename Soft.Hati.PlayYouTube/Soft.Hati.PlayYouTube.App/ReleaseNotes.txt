@@ -1,3 +1,6 @@
+27/07/2015:
+- Added support for playlist and channels
+- new window links open in default browser
 18/07/2015:
 - Changed Display controls to allow hide of list.
 - Added settings for refine the search results.
