@@ -23,6 +23,7 @@
             </Grid>
         </DataTemplate>
     </UserControl.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -187,4 +188,5 @@
             </xcad:LayoutRoot>
         </xcad:DockingManager>
     </Grid>
+    </ScrollViewer>
 </UserControl>
