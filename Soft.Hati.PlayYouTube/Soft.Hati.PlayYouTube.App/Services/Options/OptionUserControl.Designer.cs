@@ -45,6 +45,8 @@
             // 
             // SearchEngineCB
             // 
+            this.SearchEngineCB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchEngineCB.FormattingEnabled = true;
             this.SearchEngineCB.Location = new System.Drawing.Point(125, 29);
             this.SearchEngineCB.Name = "SearchEngineCB";
@@ -54,6 +56,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.SearchEngineCB);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
