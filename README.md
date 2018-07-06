@@ -23,6 +23,3 @@ CI: [![Build status](https://ci.appveyor.com/api/projects/status/mm7u1f8dm2vn5l2
 
 Release: [![Build status](https://ci.appveyor.com/api/projects/status/qgykpbj3ifyfu0i7?svg=true)](https://ci.appveyor.com/project/kanekotic/playyoutube)
 
-### Logo
-
-Check out the new logo that I created on <a href="http://logomakr.com" title="Logo Makr">LogoMakr.com</a> https://logomakr.com/0IWkNv
