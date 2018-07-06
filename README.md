@@ -1,4 +1,4 @@
-# PlayYouTube
+# ![playyoutubeheader](https://user-images.githubusercontent.com/3071208/42363002-129d9374-80f6-11e8-9ccf-1bd222f07884.png)
 
 [![Join the chat at https://gitter.im/Hatisoft/PlayYouTube](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Hatisoft/PlayYouTube?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -16,7 +16,7 @@ put your query on the search combo box and hit enter. You will be provided with 
 
 ### Support or Contact
 Having trouble with 'PlayYouTube'? Any idea of how to improve it? 
-Review our [documentation](https://github.com/Hatisoft/PlayYouTube/wiki) or [add issue/recomendation](https://github.com/Hatisoft/PlayYouTube/issues) and we’ll sort it out.
+Review our [documentation](https://github.com/Hatisoft/PlayYouTube/wiki) or [add issue/recomendation](https://github.com/Hatisoft/PlayYouTube/issues) and weâ€™ll sort it out.
 
 ###Build State
 CI: [![Build status](https://ci.appveyor.com/api/projects/status/mm7u1f8dm2vn5l27?svg=true)](https://ci.appveyor.com/project/kanekotic/playyoutube-877b8)
